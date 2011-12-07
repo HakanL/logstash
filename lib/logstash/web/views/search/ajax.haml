@@ -36,10 +36,8 @@
       %span#querytime= "(%.3f seconds)" % @results.duration
   - if @results.events.length == 0 
     - if !params[:q]
-      / We default to a '+2 days' in the future  to capture 'today at 00:00'
-      / plus tomorrow, inclusive, in case you are 23 hours behind the international
-      / dateline.
-      %h3#querystatus No query given. How about <a href="?q=* @timestamp:[#{(Time.now - 7*24*60*60).strftime("%Y-%m-%d")} TO #{(Time.now + 2*24*60*60).strftime("%Y-%m-%d")}]" class="querychanger">this?</a>
+      / We default to today
+      %h3#querystatus No query given. How about <a href="?q=* @timestamp:[#{(Time.now - 1*24*60*60).strftime("%Y-%m-%d")} TO #{(Time.now + 0*24*60*60).strftime("%Y-%m-%d")}]" class="querychanger">this?</a>
     - else
       %h3#querystatus No results for query '#{params[:q]}' 
   - else
